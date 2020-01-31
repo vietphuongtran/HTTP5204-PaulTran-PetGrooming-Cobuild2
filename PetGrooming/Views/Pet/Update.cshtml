@@ -3,12 +3,12 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update a Pet</h2>
+    <h2>Update @Model.pet.PetName 's information </h2>
 <form action="/Pet/Update/@Model.pet.PetID" method="POST">
     <div>Pet Name: <input type="text" value="@Model.pet.PetName" id="PetName" name="PetName"/></div>
     <div>Pet Color: <input type="text" value="@Model.pet.Color" id="PetColor" name="PetColor"/></div>
-    <div>Pet Weight: </div><input type="text" value="@Model.pet.Weight" id="PetWeight" name="PetWeight"/></div>
-    <div> Species Name:
+    <div>Pet Weight: <input type="text" value="@Model.pet.Weight" id="PetWeight" name="PetWeight"/></div>
+    <div>Species Name:
     <select id="SpeciesID" type="text" name="SpeciesID">
     @{
         //A rendering loop for presenting a list of species

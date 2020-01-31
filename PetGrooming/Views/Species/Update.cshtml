@@ -3,7 +3,7 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update a Species</h2>
+<h2>Update @Model.Name 's information</h2>
 <form action="/Species/Update/@Model.SpeciesID" method="POST">
     <span>Pet Name: </span><input type="text" value="@Model.Name" id="SpeciesName" name="SpeciesName" /><br />
     <input type="submit" value="update species" />
