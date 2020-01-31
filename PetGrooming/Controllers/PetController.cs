@@ -151,21 +151,22 @@ namespace PetGrooming.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(int id, string PetName, string PetColor, double PetWeight, string PetNotes)
+        public ActionResult Update(int id, string PetName, string PetColor, double PetWeight, string PetNotes, int SpeciesID)
         {
 
             Debug.WriteLine("I am trying to edit a pet's name to "+PetName+" and change the weight to "+PetWeight.ToString());
 
             //logic for updating the pet in the database goes here
             //write the query
-            string query = "update pets set PetName=@PetName, color= @PetColor, Weight=@PetWeight, Notes=@PetNotes where petid=@id"; //new SqlParameter("@id", id)).FirstOrDefault();
+            string query = "update pets set PetName=@PetName, color= @PetColor, Weight=@PetWeight, Notes=@PetNotes, SpeciesID = @SpeciesID  where petid=@id"; //new SqlParameter("@id", id)).FirstOrDefault();
             //Parameterized query
-            SqlParameter[] sqlparams = new SqlParameter[5];            
+            SqlParameter[] sqlparams = new SqlParameter[6];            
             sqlparams[0] = new SqlParameter("@PetName", PetName);
             sqlparams[1] = new SqlParameter("@PetWeight", PetWeight);
             sqlparams[2] = new SqlParameter("@PetColor", PetColor);
             sqlparams[3] = new SqlParameter("@PetNotes", PetNotes);
             sqlparams[4] = new SqlParameter("@id", id);
+            sqlparams[5] = new SqlParameter("@SpeciesID", SpeciesID);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
             //return to List view
