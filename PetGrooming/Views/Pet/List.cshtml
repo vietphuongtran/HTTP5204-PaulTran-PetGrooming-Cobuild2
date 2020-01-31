@@ -3,18 +3,18 @@
 @{
     ViewBag.Title = "List";
 }
-<!--Adding searchbar not successful
+
 <h2>List of Pets</h2>
-<form method="Post" action="/Pet/Search/@Pet.PetID">
+<!--Adding searchbar not successful -->
+<form method="Post" action="/Pet/List">
     <input type="text" id="searchkey" name="searchkey" placeholder="Search for a pet here" />
-    <button type="submit">Search</button>
-</form> -->
+    <input type="submit" value="Search" />
+</form>
 
 <table class="table">
     <tr>
         <th>Pet Name</th>
         <th>Species</th>
-        <th>Weight</th>
         <th>Modify</th>
     </tr>
     @{
@@ -24,10 +24,9 @@
             <tr>
                 <th><a href="/Pet/Show/@Pet.PetID">@Pet.PetName</a></th>
                 <th><a href="/Species/Show/@Pet.SpeciesID">@Pet.Species.Name</a></th>
-                <th>@Pet.Weight</th>
                 <th><a href="/Pet/Update/@Pet.PetID">Update</a></th>
             </tr>
-        }        
+        }
     }
 </table>
 <a href="/Pet/Add">Add a pet</a>

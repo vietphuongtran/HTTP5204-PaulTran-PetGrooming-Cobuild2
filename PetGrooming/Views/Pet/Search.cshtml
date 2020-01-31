@@ -1,19 +1,23 @@
-﻿
+﻿@model List<PetGrooming.Models.Pet>
 @{
     ViewBag.Title = "Search";
 }
+    <table class="table">
+        <tr>
+            <th>Pet Name</th>
+            <th>Species</th>
+            <th>Modify</th>
+        </tr>
+        @{
 
-@model PetGrooming.Models.Pet
-
-@{
-    ViewBag.Title = "Show";
-}
-
-<h2>Details about @Model.PetName the @Model.Species.Name</h2>
-<div>Name : @Model.PetName</div>
-<div>Weight : @Model.Weight</div>
-<div>Color : @Model.Color</div>
-<div>Notes : @Model.Notes</div>
-<div>Species : @Model.Species.Name</div>
-
+            foreach (var Pet in Model)
+            {
+                <tr>
+                    <th><a href="/Pet/Show/@Pet.PetID">@Pet.PetName</a></th>
+                    <th><a href="/Species/Show/@Pet.SpeciesID">@Pet.Species.Name</a></th>
+                    <th><a href="/Pet/Update/@Pet.PetID">Update</a></th>
+                </tr>
+            }
+        }
+    </table>
 

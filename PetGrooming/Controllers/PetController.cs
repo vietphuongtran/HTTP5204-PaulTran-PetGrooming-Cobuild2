@@ -67,20 +67,37 @@ namespace PetGrooming.Controllers
             }
             return View(pet);
         }
-        //Search bar added
-        /*[HttpPost]
+        //Search bar added not sucessfully
+        [HttpPost]
         public ActionResult Search(string searchkey)
         {
             Debug.WriteLine("I am finding with name " + searchkey);
-            string query = "select * from pets where PetName = %@searchkey% or Weight = %@searchkey% or color = %@searchkey% or notes = %@searchkey";
+            //run the query
+            string query = "select * from pets where PetName = %@searchkey% or Weight = %@searchkey% or color = %@searchkey% or Notes = %@searchkey";
+            //parameterized query
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@searchkey", searchkey);
+            //execute
             db.Pets.SqlQuery(query, sqlparams);
-            return View();   
-
-        }*/
+            return RedirectToAction("List");
+        }
         //Possible bugs: searckey not pulled in or/and command to select statement is wrong
-
+        //Possible solution 1 to search bar: Search is basically show but with different query
+        //Result: Failed because search return a list
+        /*public ActionResult Search(string searchkey)
+        {
+            if (searchkey == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+          
+            Pet pet = db.Pets.SqlQuery("select * from pets where PetName = %@searchkey% or Weight = %@searchkey% or color = %@searchkey% or Notes = %@searchkey");
+            if (pet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pet);
+        }*/
         //THE [HttpPost] Means that this method will only be activated on a POST form submit to the following URL
         //URL: /Pet/Add
         [HttpPost]
