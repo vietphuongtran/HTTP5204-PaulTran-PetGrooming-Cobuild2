@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+@model PetGrooming.Models.Pet
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Details about @Model.PetName the @Model.Species.Name</h2>
+<div>Name : @Model.PetName</div>
+<div>Weight : @Model.Weight</div>
+<div>Color : @Model.Color</div>
+<div>Notes : @Model.Notes</div>
+<div>Species : @Model.Species.Name</div>
+
+

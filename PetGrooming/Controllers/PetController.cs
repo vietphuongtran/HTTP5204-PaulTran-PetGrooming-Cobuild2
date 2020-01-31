@@ -67,6 +67,19 @@ namespace PetGrooming.Controllers
             }
             return View(pet);
         }
+        //Search bar added
+        /*[HttpPost]
+        public ActionResult Search(string searchkey)
+        {
+            Debug.WriteLine("I am finding with name " + searchkey);
+            string query = "select * from pets where PetName = %@searchkey% or Weight = %@searchkey% or color = %@searchkey% or notes = %@searchkey";
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("@searchkey", searchkey);
+            db.Pets.SqlQuery(query, sqlparams);
+            return View();   
+
+        }*/
+        //Possible bugs: searckey not pulled in or/and command to select statement is wrong
 
         //THE [HttpPost] Means that this method will only be activated on a POST form submit to the following URL
         //URL: /Pet/Add
